@@ -3,6 +3,7 @@ package com.example.startproject.member.controller;
 
 import com.example.startproject.member.controller.dto.JoinRequest;
 import com.example.startproject.member.controller.dto.NewRequestDto;
+import com.example.startproject.member.controller.dto.PostRequestDto;
 import com.example.startproject.member.repository.MemberRepository;
 import com.example.startproject.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ public class MemberController {
         String id = joinRequest.getId();
         String name = joinRequest.getName();
         String phoneNumber = joinRequest.getPhoneNumber();
+
 
         String result = memberService.join(id, name, phoneNumber);
         if (result.equalsIgnoreCase("success")) {
@@ -74,15 +76,37 @@ public class MemberController {
         System.out.println(phone);
         return name + ", " + phone;
     }
+
     // dto 형태로 매핑하는 방법 / XXRequestDto 파일 생성
     // 필드와 get, set 메서드 생성
     // 매개변수로 XXRequestDto를 받아옴 ( 어노테이션은 붙이지 않음 )
     @GetMapping("/request-dto")
     public String requestDto(NewRequestDto newRequest) {
-//        System.out.println(newRequest.getName());
-//        System.out.println(newRequest.getPhone());
+        System.out.println(newRequest.getName());
+        System.out.println(newRequest.getPhone());
         return newRequest.toString();
     }
+
+    // Map을 이용해 받기
+    // RequestBody 어노테이션을 붙여준다
+    @PostMapping("post-mapping")
+    public int postMapping(@RequestBody Map<String, Object> requestData) {
+        requestData.entrySet().forEach( entry -> {
+            System.out.println("key : " + entry.getKey());
+            System.out.println("value : " + entry.getValue());
+
+        });
+
+        return 200;
+    }
+    @PostMapping("post-dto")
+    public void post(@RequestBody PostRequestDto postRequest) {
+        System.out.println(postRequest.getName());
+        System.out.println(postRequest.getId());
+        System.out.println(postRequest.getEmail());
+    }
+
+
 
 
 //    @GetMapping

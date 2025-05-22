@@ -3,10 +3,11 @@ package com.example.startproject.member.controller.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.http.converter.json.GsonBuilderUtils;
 
 @Getter
-@NoArgsConstructor
+@Setter
 public class NewRequestDto {
 
     private String name;
