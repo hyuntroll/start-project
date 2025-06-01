@@ -72,7 +72,7 @@ docker run -p 8080:8080 spring/start-project
 기본적으로 애플리케이션은 8080 포트에서 실행됩니다.
 
 
-### 4.컨테이너 정리
+### 4. 컨테이너 정리
 ```bash
 docker ps # 실행중인 컨테이너 확인
 docker stop <COTAINER_ID>
