@@ -36,3 +36,46 @@ member
 ### API
 
 ### DTO
+ 
+
+
+## 🐳 Docker 사용법
+
+Docker를 통해 컨테이너 환경에서 실행이 가능합니다.
+
+Docker 연습입니당.
+
+
+### 1. 빌드 (Maven)
+
+Maven을 통해 애플리케이션을 빌드합니다.
+
+```bash
+./mvnw clean package
+```
+빌드 결과물은 /target/ 폴더에 .jar 파일로 생성됩니다.
+
+### 2. Docker 이미지빌드
+루트 폴더에 있는 Dockerfile을 기반으로 이미지를 생성합니다.
+```bash
+docker build -t spring/start-projcet
+```
+※ 필요시 .jar 파일명을 직접 지정하려면:
+```bash
+docker build --build-arg JAR_FILE=target/your-app.jar -t spring/start-project .
+```
+
+### 3. Docker컨테이너 실행
+```bash
+docker run -p 8080:8080 spring/start-project
+```
+기본적으로 애플리케이션은 8080 포트에서 실행됩니다.
+
+
+### 4.컨테이너 정리
+```bash
+docker ps # 실행중인 컨테이너 확인
+docker stop <COTAINER_ID>
+docker rm <COTAINER_ID>
+```
+
