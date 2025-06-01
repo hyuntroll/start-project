@@ -58,7 +58,7 @@ Maven을 통해 애플리케이션을 빌드합니다.
 ### 2. Docker 이미지빌드
 루트 폴더에 있는 Dockerfile을 기반으로 이미지를 생성합니다.
 ```bash
-docker build -t spring/start-projcet
+docker build -t spring/start-projcet .
 ```
 ※ 필요시 .jar 파일명을 직접 지정하려면:
 ```bash
